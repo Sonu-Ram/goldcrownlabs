@@ -1,0 +1,314 @@
+.journeyWrapper {
+  padding: 4rem 1rem;
+  color: white;
+  background-color: #111;
+  text-align: center;
+}
+
+.heading {
+  font-size: 3.75rem;
+  margin-bottom: 2rem;
+  max-width: 550px;
+  margin-left: auto;
+  margin-right: auto; /* centers horizontally */
+  text-align: center; /* centers multiline text */
+  background: linear-gradient(to right, #e5f454, #d65814);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+/* =========================
+   Skew Cards Section
+========================= */
+.skewContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-bottom: 3rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 260px;
+  padding: 1.5rem;
+  text-align: left;
+  border-radius: 10px;
+  color: #000;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  margin-bottom: 20px;
+  width: 60px;
+  height: auto;
+}
+
+.card h3 {
+  margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.card p {
+  margin-top: 120px;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+.eTransform {
+  transform: skew(15deg, -15deg);
+}
+
+.first {
+  background: linear-gradient(180deg, #e6e7e0, #7c7d7c);
+}
+
+.second {
+  background: linear-gradient(180deg, #e5f454, #d65814);
+  transform: skew(-15deg, 15deg);
+}
+
+.third {
+  background: linear-gradient(180deg, #212121, #141414);
+  color: #fff;
+}
+
+.skewRemoved .eTransform {
+  transform: skew(0deg, 0deg) !important;
+}
+
+/* =========================
+   Delivery Section
+========================= */
+.deliverySection {
+  background-color: #242424;
+  padding: 50px 75px 60px 50px;
+  border-radius: 12px;
+  margin-top: 2rem;
+  margin-left: 10rem;
+  margin-right: 10rem;
+}
+
+.deliverySection h3 {
+  font-size: 40px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.deliverySectionStart {
+  display: flex;
+  gap: 2rem;
+}
+
+.steps {
+  background-color: #161616;
+  flex-direction: column;
+  text-align: left;
+  width: 100%;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.steps > div {
+  display: flex;
+  padding: 20px;
+  border-bottom: 1px solid #ffffff17;
+}
+
+.steps h4 {
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.steps p {
+  font-size: 18px;
+}
+
+.steps span {
+  font-weight: bold;
+  font-size: 50px;
+  margin-right: 20px;
+  background: linear-gradient(to right, #e5f454, #d65814);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
+.testimonial {
+  text-align: left;
+  padding: 2rem;
+  border-radius: 10px;
+  max-width: 40%;
+}
+
+.testimonial blockquote {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 1rem;
+  max-width: 580px;
+}
+
+.person {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.person strong {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.person p {
+  color: #ffffff80;
+}
+
+.person img {
+  width: 55px;
+  height: 63px;
+}
+
+.callToAction {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(to right, #e5f454, #d65814);
+  border: none;
+  border-radius: 140px;
+  color: #000;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+  margin-top: 30px;
+}
+
+.callToAction:hover span {
+  transform: rotate(0deg);
+}
+
+.callToAction span {
+  display: inline-block;
+  transform: rotate(-30deg);
+  transition: transform 0.3s ease;
+}
+
+/* =========================
+   RESPONSIVE STYLES
+========================= */
+
+/* Tablets (≤1024px) */
+@media (max-width: 1024px) {
+  .heading {
+    font-size: 2.8rem;
+  }
+
+  .deliverySection {
+    margin-left: 4rem;
+    margin-right: 4rem;
+    padding: 40px;
+  }
+
+  .deliverySection h3 {
+    font-size: 32px;
+  }
+
+  .testimonial {
+    max-width: 45%;
+  }
+}
+
+/* Mobile Tablets (≤768px) */
+@media (max-width: 768px) {
+  .heading {
+    font-size: 2.2rem;
+    max-width: 410px;
+  }
+
+  .skewContainer {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .card {
+    max-width: 90%;
+    transform: skew(0deg, 0deg);
+  }
+
+  .deliverySection {
+    margin: 1rem 0rem;
+    padding: 1rem;
+  }
+
+  .deliverySectionStart {
+    flex-direction: column;
+  }
+
+  .steps {
+    border-radius: 10px;
+  }
+
+  .testimonial {
+    max-width: 100%;
+    padding: 1rem;
+  }
+
+  .testimonial blockquote {
+    font-size: 16px;
+  }
+
+  .deliverySection h3 {
+    font-size: 28px;
+    text-align: center;
+  }
+
+  .callToAction {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* Small Screens (≤480px) */
+@media (max-width: 480px) {
+  .heading {
+    font-size: 1.675rem;
+    max-width: 240px;
+  }
+
+  .card h3 {
+    font-size: 2rem;
+  }
+
+  .card p {
+    margin-top: 60px;
+    font-size: 0.875rem;
+  }
+
+.card img {
+  width: 33px;
+}
+
+  .deliverySection h3 {
+    font-size: 24px;
+  }
+
+  .steps span {
+    font-size: 36px;
+  }
+
+  .steps h4 {
+    font-size: 18px;
+  }
+
+  .steps p {
+    font-size: 16px;
+  }
+}

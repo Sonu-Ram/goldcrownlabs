@@ -1,0 +1,138 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  background: #000; /* dark background like your screenshot */
+  color: white;
+  padding: 1rem 2rem;
+  overflow: hidden;
+  font-family: 'Lato', sans-serif;
+}
+
+.textSection {
+  white-space: nowrap;
+  font-weight: 600;
+  font-size: 1rem;
+  padding-right: 1.5rem;
+  margin-left: 8rem;
+  line-height: 1.4rem;
+}
+
+.divider {
+  width: 1px;
+  height: 55px;
+  background-color: #ffffff;
+  /* margin-right: 1.5rem; */
+}
+
+.carouselWrapper {
+  flex: 1;
+  overflow: hidden;
+  position: relative;
+}
+
+.carouselTrack {
+  display: flex;
+  width: max-content;
+  animation: scroll 20s linear infinite;
+}
+
+.logoItem {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 2rem;
+}
+
+.logoItem img {
+  height: 40px;
+  max-width: 120px;
+  object-fit: contain;
+  filter: brightness(0) invert(1); /* white-on-dark style */
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Mobile responsive */
+@media screen and (max-width: 1024px) {
+  .textSection {
+    font-size: 0.95rem;
+    margin-left: 4rem;
+  }
+
+  .logoItem img {
+    height: 35px;
+    max-width: 100px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+    gap: 1rem;
+  }
+
+  .textSection {
+    white-space: normal;
+    margin-left: 0;
+    padding-right: 0;
+    text-align: center;
+    font-size: 0.95rem;
+    width: 100%;
+  }
+  
+  .textSection br {
+    display: none;
+  }
+
+  .divider {
+    display: none;
+  }
+
+  .carouselWrapper {
+    width: 100%;
+  }
+
+  .carouselTrack {
+    animation: scrollMobile 20s linear infinite;
+  }
+
+  .logoItem {
+    padding-right: 1rem;
+  }
+
+  .logoItem img {
+    height: 30px;
+    max-width: 90px;
+  }
+
+  @keyframes scrollMobile {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+}
+
+@media screen and (max-width: 480px) {
+  .textSection {
+    font-size: 0.85rem;
+  }
+
+  .logoItem img {
+    height: 26px;
+    max-width: 80px;
+  }
+}
