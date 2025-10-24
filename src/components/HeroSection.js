@@ -37,11 +37,11 @@ export default function HeroSection() {
       label: "QA",
       icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682da51b8fb49d9b26d76d8f_check-qa.svg",
     },
-    {
-      id: "notsure",
-      label: "Not sure",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682d9efb08c31bead36c6552_check_software.svg",
-    },
+    // {
+    //   id: "notsure",
+    //   label: "Not sure",
+    //   icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682d9efb08c31bead36c6552_check_software.svg",
+    // },
   ];
 
 
@@ -123,24 +123,24 @@ export default function HeroSection() {
             required
           />
 
-          <button className={styles.ctaButton} onClick={(e) => submitForm(e)}>
+          {/* <button className={styles.ctaButton} onClick={(e) => submitForm(e)}>
             <span className={styles.chevrons}>›››</span> Get started{" "}
             <span className={styles.chevronsReverse}>‹‹‹</span>
-          </button>
+          </button> */}
 
-          {/* <button className={styles.ctaButton}>
+           <button className={styles.ctaButton}>
             <div className={styles.chevrons}>
-              <img src="/chevron-right.svg" alt="" />
-              <img src="/chevron-right.svg" alt="" />
-              <img src="/chevron-right.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5a_animation-chevron.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5a_animation-chevron.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5a_animation-chevron.svg" alt="" />
             </div>
             <span>Get started</span>
             <div className={styles.chevronsReverse}>
-              <img src="/chevron-left.svg" alt="" />
-              <img src="/chevron-left.svg" alt="" />
-              <img src="/chevron-left.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5b_animation-chevron-reverse.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5b_animation-chevron-reverse.svg" alt="" />
+              <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5b_animation-chevron-reverse.svg" alt="" />
             </div>
-          </button> */}
+          </button> 
         </div>
       </div>
 
