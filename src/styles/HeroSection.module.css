@@ -283,7 +283,12 @@
   .primaryBtn,
   .secondaryBtn {
     width: 100%;
-    /* max-width: 180px; */
+    /* max-width: 150px;
+    padding: 10px 5px; */
+  }
+
+  .formCard {
+    margin-top: 0px;
   }
 }
 
