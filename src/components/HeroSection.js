@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styles from "../styles/HeroSection.module.css";
+import Link from "next/link";
 
 export default function HeroSection() {
   const [masterRequirements, setMasterRequirements] = useState([]);
@@ -88,7 +89,7 @@ export default function HeroSection() {
           </p>
 
           <div className={styles.btnGroup}>
-            <button className={styles.primaryBtn}>Contact Us</button>
+            <button className={styles.primaryBtn}> <Link href="/contactus" >Contact Us</Link></button>
             <button className={styles.secondaryBtn}>Explore Services</button>
           </div>
         </div>

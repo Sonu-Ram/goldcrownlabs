@@ -12,7 +12,7 @@ export default async function handler(req, res) {
       console.log("conn:", conn);
     try {
       const [rows] = await conn.query(
-        "SELECT `MasterRequirmentID`, `MasterRequirmentLable`, `MasterRequirmentIcon` FROM `masterrequirments` WHERE 1 ORDER BY MasterRequirmentID ASC"
+        "SELECT `MasterRequirmentID`, `MasterRequirmentLable`, `MasterRequirmentIcon` FROM `masterrequirments` WHERE MasterRequirmentStatus = 1 ORDER BY MasterRequirmentID ASC"
       );
       console.log("rows:", rows);
       res.status(200).json(rows);

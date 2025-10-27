@@ -15,7 +15,6 @@ export default async function handler(req, res) {
   const conn = await pool.getConnection();
 
   try {
-    // 1️⃣ Insert into `customers` (if table exists)
     const [customerResult] = await conn.query(
       "INSERT INTO customers (CustomerEmail) VALUES (?)",
       [email]
@@ -23,7 +22,6 @@ export default async function handler(req, res) {
 
     const customerId = customerResult.insertId;
 
-    // 2️⃣ Insert related requirements into a junction table (optional)
     const values = requirements.map((reqId) => [customerId, reqId]);
     await conn.query(
       "INSERT INTO customersrequirments (CustomerNo, MasterRequirmentNo) VALUES ?",
