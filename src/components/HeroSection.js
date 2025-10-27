@@ -1,48 +1,27 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styles from "../styles/HeroSection.module.css";
 
 export default function HeroSection() {
+  const [masterRequirements, setMasterRequirements] = useState([]);
   const [selected, setSelected] = useState([]);
   const [email, setEmail] = useState("");
-      console.log("selected:", selected);
+  console.log("selected:", selected);
 
-  const options = [
-    {
-      id: "design",
-      label: "Design",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682db4bba3920420fa65d776_check_design.svg",
-    },
-    {
-      id: "marketing",
-      label: "Marketing",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682db4bb08169e2e083eb412_check-marketing.svg",
-    },
-    {
-      id: "software",
-      label: "Software Development",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682d9efb08c31bead36c6552_check_software.svg",
-    },
-    {
-      id: "nocode",
-      label: "No-code dev",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682da51bf0abc53ce04689bd_check-no-code.svg",
-    },
-    {
-      id: "copywriting",
-      label: "Copywriting",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682da51b63bfe59bccd5847c_check-copyright.svg",
-    },
-    {
-      id: "qa",
-      label: "QA",
-      icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682da51b8fb49d9b26d76d8f_check-qa.svg",
-    },
-    // {
-    //   id: "notsure",
-    //   label: "Not sure",
-    //   icon: "https://cdn.prod.website-files.com/6818a97ae905afeb08eff668/682d9efb08c31bead36c6552_check_software.svg",
-    // },
-  ];
+  useEffect(() => {
+    fetchMasterRequirements();
+  }, []);
+
+
+  const fetchMasterRequirements = async () => {
+    try {
+      const res = await fetch("/api/masterrequirments/getall");
+      if (!res.ok) return;
+      const data = await res.json();
+      setMasterRequirements(data);
+    } catch (err) {
+      console.error("Failed to fetch master requirements", err);
+    }
+  };
 
 
   const toggleSelect = (id) => {
@@ -51,7 +30,7 @@ export default function HeroSection() {
     );
   };
 
-  function submitForm(e) {
+  async function submitForm(e) {
     e.preventDefault();
     if (selected.length === 0 || email.trim() === "") {
       alert("Please select at least one option and enter your email.");
@@ -61,8 +40,36 @@ export default function HeroSection() {
       return;
     } else {
       // Handle form submission
-      console.log("Selected options:", selected);
+      console.log("Selected masterRequirements:", selected);
       console.log("Email:", email);
+      try {
+        const res = await fetch("/api/customers/insert", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email,
+            requirements: selected,
+          }),
+        });
+
+        if (!res.ok) {
+          const errData = await res.json();
+          console.error("Error:", errData);
+          alert("Failed to submit form");
+          return;
+        }
+
+        const data = await res.json();
+        console.log("✅ Submitted successfully:", data);
+        alert("Form submitted successfully!");
+        setSelected([]);
+        setEmail("");
+      } catch (err) {
+        console.error("❌ Failed to submit form:", err);
+        alert("Something went wrong. Please try again.");
+      }
     }
   }
 
@@ -92,20 +99,20 @@ export default function HeroSection() {
           <p className={styles.formSubtitle}>What do you need help with?</p>
 
           <div className={styles.checkboxGrid}>
-            {options.map((opt) => (
+            {masterRequirements.length > 0 && masterRequirements.map((opt) => (
               <label
-                key={opt.id}
-                className={`${styles.option} ${selected.includes(opt.id) ? styles.active : ""
+                key={opt.MasterRequirmentID}
+                className={`${styles.option} ${selected.includes(opt.MasterRequirmentID) ? styles.active : ""
                   }`}
-                style={{ "--icon-url": `url(${opt.icon})` }}
+                style={{ "--icon-url": `url(${opt.MasterRequirmentIcon})` }}
               >
                 <input
                   type="checkbox"
-                  checked={selected.includes(opt.id)}
-                  onChange={() => toggleSelect(opt.id)}
+                  checked={selected.includes(opt.MasterRequirmentID)}
+                  onChange={() => toggleSelect(opt.MasterRequirmentID)}
                 />
                 <span className={styles.icon}></span>
-                {opt.label}
+                {opt.MasterRequirmentLable}
               </label>
             ))}
           </div>
@@ -128,7 +135,7 @@ export default function HeroSection() {
             <span className={styles.chevronsReverse}>‹‹‹</span>
           </button> */}
 
-           <button className={styles.ctaButton}>
+          <button className={styles.ctaButton} onClick={(e) => submitForm(e)}>
             <div className={styles.chevrons}>
               <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5a_animation-chevron.svg" alt="" />
               <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5a_animation-chevron.svg" alt="" />
@@ -140,7 +147,7 @@ export default function HeroSection() {
               <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5b_animation-chevron-reverse.svg" alt="" />
               <img src="https://cdn.prod.website-files.com/68c2a33d71ce477bc4cfa871/68c2a33d71ce477bc4cfaa5b_animation-chevron-reverse.svg" alt="" />
             </div>
-          </button> 
+          </button>
         </div>
       </div>
 
