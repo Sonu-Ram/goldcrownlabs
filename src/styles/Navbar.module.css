@@ -1,0 +1,109 @@
+.navbar {
+  background-color: #FFFFFF0A;
+  color: white;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+  margin-bottom: -100px;
+  padding: 1rem 0px;
+}
+
+.navContainer {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.navLogo img {
+  width: 100%;
+  max-width: 100px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.navToggle {
+  display: none;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+}
+
+.navMenu {
+  list-style: none;
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+
+}
+
+.navItem {}
+
+.navLink {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.navLink:hover {
+  color: #ffcc00;
+}
+
+.book_call {
+      background-color: transparent;
+    color: white;
+    padding: 16px 34px;
+    border: 1px solid #ffffffc9;
+    border-radius: 11px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-left: 50px;
+    font-weight: 500;
+}
+
+.menu_icon {
+  display: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .navToggle {
+    display: block;
+  }
+
+  .navMenu {
+    position: absolute;
+    top: 100%;
+    left: 120px;
+    right: 0;
+    background-color: #0a74dae0;
+    flex-direction: column;
+    display: none;
+  }
+
+  .navMenu.active {
+    display: flex;
+  }
+
+  .navItem {
+    text-align: right;
+    padding: 1rem 25px;
+  }
+  
+
+  .menu_icon {
+    display: block;
+  }
+
+  .book_call {
+    padding: 5px 10px;
+    margin-right: 10px;
+  }
+}
